@@ -5,10 +5,18 @@
  */
 package com.codekul.firstgradle;
 
+import com.codekul.firstgradle.exception.Calc;
+import com.codekul.firstgradle.exception.CalcException;
+import com.codekul.firstgradle.generics.Generics;
 import com.codekul.firstgradle.innerclass.Car;
 import com.codekul.firstgradle.innerclass.MyListener;
+import com.codekul.firstgradle.otherpackagebasics.TigerOther;
 import com.codekul.firstgradle.packagebasics.Animal;
+import com.codekul.firstgradle.packagebasics.TempMain;
 import com.codekul.firstgradle.threading.MyThread;
+import com.codekul.firstjava.collections.MyCollection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,9 +24,45 @@ import com.codekul.firstgradle.threading.MyThread;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) /*throws Exception*/{
        
-        threading();
+       collections();
+    }
+    
+    public static void collections(){
+        
+        MyCollection collection = new MyCollection();
+        collection.whatIsCollection();
+        collection.howIteratorWorks();
+        collection.howForeachWorksOnCollection();
+        collection.whatIsSet();
+        collection.whatIsMap();
+    }
+    
+    public static void generics(){
+        Generics<Car> genericCar = new Generics<>();
+        genericCar.fullGeneric(new Car());
+        genericCar.provideAnything();
+        
+        Generics<Animal> genAnimal = new Generics<>();
+        genAnimal.fullGeneric(new Animal());
+    }
+    
+    public static void exceptionHandling() /*throws Exception*/{
+        
+        try /*throws Exception*/ {
+            Calc calc = new Calc();
+            //calc.calcIt();
+
+            //calc.calcIt(10,0);
+            
+            calc.calcIt(10);
+        } catch(CalcException e){
+            System.out.println(" "+e);
+        }
+        catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void packageBasics() {

@@ -39,7 +39,7 @@ public class Car {
     }
     
     public void speedUpCar(){
-        
+        System.out.println("Speed Up Car");
         // local inner class
         final class Torque {
             
